@@ -58,13 +58,34 @@ const getWeatherDataFromApi = async () => {
                                   }</figcaption>
                               </figure>`;
     list.prepend(createdLi);
-    form.reset();
+
+    //!Capturing;
+    createdLi.addEventListener("click", (e) => {
+      if (e.target.tagName == "IMG") {
+        e.target.src = e.target.src == iconUrl ? iconUrlAWS : iconUrl;
+      }
+    });
+
+    //!Bubbling
+    // createdLi.addEventListener("click", (e) => {
+    //   alert(`LI element is clicked!!`);
+    //   window.location.href = "https://clarusway.com";
+    // });
+    // createdLi.querySelector("figure").addEventListener("click", (e) => {
+    //   alert(`FIGURE element is clicked!!`);
+    //   window.location.href = "https://clarusway.com";
+    // });
+
+    // createdLi.querySelector("img").addEventListener("click", (e) => {
+    //   alert(`IMG element is clicked!!`);
+    //   window.location.href = "https://clarusway.com";
+    // });
   } catch (error) {
     console.log(error);
     msg.innerText = `404 (City Not Found)`;
     setTimeout(() => {
       msg.innerText = "";
     }, 5000);
-    form.reset();
   }
+  form.reset();
 };
