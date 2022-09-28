@@ -2,6 +2,7 @@ const form = document.querySelector(".top-banner form");
 const input = document.querySelector(".container input");
 const msg = document.querySelector("span.msg");
 const list = document.querySelector(".ajax-section .cities");
+const language = document.querySelector(".languageSelect");
 
 // localStorage.setItem("tokenKey", "");
 
@@ -14,7 +15,7 @@ const getWeatherDataFromApi = async () => {
   const tokenKey = "7e2e1395c34188ede18294c17c2f44be";
   const inputValue = input.value;
   const units = "metric";
-  const lang = "tr";
+  let lang = "tr";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${tokenKey}&units=${units}&lang=${lang}`;
   try {
     const response = await fetch(url).then((res) => res.json());
@@ -58,6 +59,12 @@ const getWeatherDataFromApi = async () => {
                                   }</figcaption>
                               </figure>`;
     list.prepend(createdLi);
+
+    // //!Select Language;
+    // language.addEventListener("change", () => {
+    //   lang = language.value;
+    //   console.log(lang);
+    // });
 
     //!Capturing;
     createdLi.addEventListener("click", (e) => {
